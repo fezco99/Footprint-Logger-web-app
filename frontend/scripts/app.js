@@ -1,3 +1,15 @@
+const token = localStorage.getItem("token");
+
+if (!token) {
+  window.location.href = "login.html";
+}
+
+fetch("/api/activities/my", {
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+});
+
 const addBtn = document.getElementById("addActivity");
 const list = document.getElementById("activityList");
 const totalDisplay = document.getElementById("total");
@@ -92,3 +104,14 @@ const chart = new Chart(ctx, {
 });
 
 renderActivities();
+
+const socket = io("https://your-render-backend-url");
+
+function requestInsight(userId) {
+  socket.emit("requestInsight", userId);
+}
+
+socket.on("insightTip", (tip) => {
+  const tipBox = document.getElementById("weeklyTip");
+  tipBox.textContent = tip;
+});
