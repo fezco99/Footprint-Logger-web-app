@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Footprint Logger</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🌍 Footprint Logger</h1>
+      <div class="nav-links">
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+    </header>
+
+    <section class="form-section">
+      <h2>Log Daily Activity</h2>
+
+      <select id="category">
+        <option value="transport">Transport</option>
+        <option value="food">Food</option>
+        <option value="energy">Energy</option>
+      </select>
+
+      <input type="text" id="activity" placeholder="Activity description" />
+      <input type="number" id="amount" placeholder="Amount (km, kWh, etc)" />
+      <button id="addActivity">Add Activity</button>
+    </section>
+
+    <section class="filter-section">
+      <label>Filter by Category:</label>
+      <select id="filterCategory">
+        <option value="all">All</option>
+        <option value="transport">Transport</option>
+        <option value="food">Food</option>
+        <option value="energy">Energy</option>
+      </select>
+    </section>
+
+    <section class="summary-section">
+      <h2>Total Emissions: <span id="total">0</span> kg CO₂</h2>
+    </section>
+
+    <section>
+      <canvas id="chart"></canvas>
+    </section>
+
+    <section>
+      <ul id="activityList"></ul>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
